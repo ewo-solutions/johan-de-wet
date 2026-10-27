@@ -1,0 +1,15 @@
+{
+  "slug": "de-velde",
+  "name": "De Velde",
+  "quarter": "Q3 2026",
+  "periodLabel": "1 July – 30 September 2026",
+  "figures": [
+    { "value": "19", "label": "registered transfers in Q3" },
+    { "value": "R1 282 000 – R3 400 000", "label": "price range" },
+    { "value": "~R29 300/m²", "label": "median price per m²" }
+  ],
+  "teaser": "The 103 m² layout was the most common transfer this quarter, at 6 of 19, followed by the 96 m² layout at 5.",
+  "pdf": "/reports/q3-2026/de-velde.pdf",
+  "coverImage": "/reports/q3-2026/de-velde-cover.jpg",
+  "published": "2026-10-26"
+}

@@ -3,9 +3,12 @@ import Base from '../../layouts/Base.astro';
 import LeadForm from '../../components/LeadForm.astro';
 import ReportCards from '../../components/ReportCards.astro';
 import ClosingBanner from '../../components/ClosingBanner.astro';
+import { getLatestReports } from '../../lib/reports';
+const __r = await getLatestReports();
+const quarter = __r.sort((a,b)=>+b.published-+a.published)[0]?.quarter ?? '';
 ---
 <Base
-  title="Paardevlei property prices by complex · Free Q2 2026 reports · Johan de Wet"
+  title={`Paardevlei property prices by complex · Free ${quarter} reports · Johan de Wet`}
   description="A free report for every Paardevlei complex, every quarter, built from registered sales. Choose De Velde, Paardevlei Lifestyle Estate, Paardevlei Square or The Jade."
 >
   <section class="hero">

@@ -10,6 +10,9 @@ import { ASSETS, STATS } from '../config';
 import { businessJsonLd } from '../lib/jsonld';
 
 const siteUrl = new URL('/', Astro.site).toString();
+import { getLatestReports } from '../lib/reports';
+const __r = await getLatestReports();
+const quarter = __r.sort((a,b)=>+b.published-+a.published)[0]?.quarter ?? '';
 ---
 <Base
   title="What is your Paardevlei unit worth? Free valuation · Johan de Wet"
@@ -43,8 +46,8 @@ const siteUrl = new URL('/', Astro.site).toString();
 
   <section class="section dark" aria-labelledby="reports-h">
     <div class="wrap">
-      <p class="kicker">Q2 2026 · Free</p>
-      <h2 id="reports-h">Q2 2026 complex reports</h2>
+      <p class="kicker">{quarter} · Free</p>
+      <h2 id="reports-h">{quarter} complex reports</h2>
       <p class="lede">One report per complex, every quarter, built from registered transfers. Pick yours.</p>
       <ReportCards />
     </div>

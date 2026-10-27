@@ -44,7 +44,7 @@ See `.env.example`. Set them in Netlify (Site configuration, Environment variabl
 
 ## Add a Q3 report
 
-1. Add `src/content/reports/q3-2026/<slug>.json` for each complex (copy the Q2 file, update figures, `quarter`, `periodLabel`, `pdf`, `coverImage`, `published`).
+1. Add `src/content/reports/q3-2026/<slug>.json` for each complex (copy the Q3 file, update figures, `quarter`, `periodLabel`, `pdf`, `coverImage`, `published`).
 2. Add the PDFs and cover images under `public/reports/q3-2026/`.
 
 No component or function changes. The site and the email function pick the latest `published` per complex. PDFs in `public/` are reachable by URL; if they must be private, move them to private storage and switch the function to signed links.
@@ -57,8 +57,8 @@ Connect the repo to Netlify (build `npm run build`, publish `dist`, set in `netl
 
 Mirrors section 10 of the brief.
 
-1. **Phone number (open).** `src/config.ts` uses a placeholder defaulting to 079 436 8478 (live landing page). The brief also gives 079 496 8478 (report covers, WhatsApp). Confirm and change the two constants there; header, footer, buttons, JSON-LD and WhatsApp all follow.
-2. **The Jade sales count (open).** Site uses 15 as the brief says; the table lists 13. Confirm.
+1. **Phone number (open).** `src/config.ts` now uses 079 496 8478, which the Q3 2026 report PDFs use everywhere (footers, covers, WhatsApp). The brief's other number is 079 436 8478 (old landing page). Confirm and change the two constants there; header, footer, buttons, JSON-LD and WhatsApp all follow.
+2. **The Jade (resolved by Q3 data).** The Q3 report covers 1 May to 30 September (14 sales, only 4 registered in Q3 itself) because of the small sample. The Q2 15-vs-13 question is now moot for the live pages; Q2 JSON is kept as history.
 3. **Domain and sending domain (open).** `SITE_URL` falls back to `https://www.example.co.za` (canonicals, sitemap, robots). Resend domain verification needed for `johan.dewet@propertycoza.co.za`.
 4. **Report PDFs and covers (missing).** `public/reports/q2-2026/*.pdf` and `*-cover.jpg` do not exist. Until the PDFs are added the function emails the requester a holding message and flags Johan. OG falls back to `public/placeholders/og-default.png` (placeholder, 1200x630).
 5. **Complex photographs (missing).** Placeholder grey blocks: `public/placeholders/band.svg` (home band), referenced only in `ASSETS.band`.
@@ -77,3 +77,7 @@ The brief refers to "existing copy" that was not supplied, so en-ZA drafts were 
 - Phase two (Cal.com embed) not built; Google Ads tag is wired behind `PUBLIC_GADS_CONVERSION`.
 - GA4 is browser-only (no Measurement Protocol) to avoid double counting.
 - No time-on-market, asking-vs-achieved or stock figures anywhere.
+
+
+## Q3 2026 data
+Report JSON in `src/content/reports/q3-2026/` is built from the tables in Johan's Q3 PDFs (medians and ranges computed from the registered sales). The Q3 PDFs themselves (about 9 MB each) are not in the repo yet: add them to `public/reports/q3-2026/` using the slugs as filenames, plus a cover image per complex. The two placeholder insight articles still quote Q2 figures and should be refreshed before approval.

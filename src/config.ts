@@ -4,12 +4,12 @@
  * under "Placeholders and open items".
  */
 
-// TODO(open item 1): the brief gives two numbers. The live landing page and
-// report footers use 079 436 8478; report covers and WhatsApp links use
-// 079 496 8478. PLACEHOLDER: defaults to 079 436 8478 until Johan confirms.
-// Change ONLY these two values; every page, link and JSON-LD reads from here.
-const PHONE_NATIONAL = '079 436 8478';
-const PHONE_E164_DIGITS = '27794368478'; // 27 + number without leading 0
+// The Q3 2026 report PDFs use 079 496 8478 throughout (footers, covers and
+// WhatsApp links), so that number is used. The brief also mentions 079 436 8478
+// (old landing page): Johan to confirm. Change ONLY these two values; every
+// page, link and JSON-LD reads from here.
+const PHONE_NATIONAL = '079 496 8478';
+const PHONE_E164_DIGITS = '27794968478'; // 27 + number without leading 0
 
 export const SITE = {
   name: 'Johan de Wet',
