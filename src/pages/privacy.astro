@@ -7,29 +7,47 @@ import { SITE } from '../config';
     <div class="wrap">
       <p class="kicker">POPIA</p>
       <h1>Privacy notice</h1>
-      {/* TODO(open item 6): Property.CoZa / legal to supply final text and Information Officer. */}
-      <p class="placeholder-note" style="max-width:44rem;margin-bottom:28px"><strong>Placeholder structure.</strong> The headings below are in place; the final legal wording and the Information Officer details are to be supplied by Johan or Property.CoZa.</p>
+      <p style="max-width:44rem;margin-bottom:28px">Last updated 27 October 2026. This notice explains how your personal information is handled when you use this website, in line with the Protection of Personal Information Act 4 of 2013 (POPIA).</p>
       <div class="prose">
-        <h2>Who collects your information</h2>
-        <p>Johan de Wet, Property Practitioner at {SITE.brokerage} ({SITE.ffc}). Contact: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+        <h2>Who is responsible for your information</h2>
+        <p>Johan de Wet, Property Practitioner at {SITE.brokerage} ({SITE.ffc}), is the responsible party. Contact: <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or {SITE.phoneDisplay}.</p>
         <h2>What we collect</h2>
-        <p>Your name, email address, mobile number, your complex or suburb, your preferred time for a valuation, and basic technical and campaign data (such as the page you came from) when you complete a form. Analytics and advertising cookies are loaded only if you accept them.</p>
+        <ul>
+          <li>Information you give us in a form: your name, email address, mobile number, your complex or suburb, and your preferred time for a valuation.</li>
+          <li>Campaign and technical information that comes with the form: the page you were on and the advert or link that brought you here (for example UTM tags).</li>
+          <li>If you accept cookies: usage and advertising data collected by Google Analytics and Meta (Facebook). Nothing of this kind is loaded unless you accept.</li>
+        </ul>
         <h2>Why we collect it</h2>
         <ul>
-          <li>To send you the property reports you ask for.</li>
-          <li>To arrange and confirm a valuation.</li>
-          <li>To send occasional marketing about property in the area, where you have agreed.</li>
+          <li>To send you the property report you asked for.</li>
+          <li>To arrange, confirm and carry out a free valuation.</li>
+          <li>To send occasional market updates and marketing about property in the area, only if you ticked the consent box. You can say no and still get your report or valuation.</li>
+          <li>To measure which reports and campaigns work, so we can improve them.</li>
         </ul>
+        <h2>Lawful basis</h2>
+        <p>We process your information with your consent, to respond to your request, and where it is in our legitimate interests to run and improve our business without harming your rights.</p>
         <h2>Who we share it with</h2>
-        <p>[To be completed: service providers such as email delivery and advertising platforms, and the brokerage.]</p>
+        <p>We never sell your information. We share it only with service providers that help us run this site, and only as far as needed:</p>
+        <ul>
+          <li>Netlify, which hosts the site and stores form submissions.</li>
+          <li>Resend, which delivers the emails we send you.</li>
+          <li>Google (Analytics) and Meta (Pixel and Conversions API), if you accept cookies.</li>
+          <li>A messaging or automation tool, used to alert Johan to a new request.</li>
+          <li>{SITE.brokerage}, the brokerage Johan works under.</li>
+        </ul>
+        <p>Some of these providers process information outside South Africa. We choose providers that protect personal information to a standard comparable to POPIA.</p>
         <h2>How long we keep it</h2>
-        <p>[Retention period to be confirmed.]</p>
+        <p>We keep your details for as long as you are in touch with us, and delete them within 3 years after our last contact unless you ask us to do so sooner or the law requires us to keep them longer.</p>
+        <h2>How we protect it</h2>
+        <p>Forms are sent over an encrypted connection, access to leads is limited to Johan and the providers above, and we do not keep your details anywhere that does not need them.</p>
+        <h2>Cookies</h2>
+        <p>The site works without cookies that track you. A banner asks whether you accept analytics and advertising cookies. If you reject, none are loaded. You can change your mind by clearing this site's data in your browser.</p>
         <h2>Your rights</h2>
-        <p>You may ask to access, correct or delete your personal information, and you may object to or opt out of marketing at any time. Every email can be unsubscribed from, or write to us at the address above.</p>
+        <p>You may ask us to confirm what information we hold about you, to see it, correct it or delete it, and you may object to its use or withdraw your consent at any time. To unsubscribe, reply to any email with "unsubscribe" or write to <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
         <h2>Information Officer</h2>
-        <p>{SITE.informationOfficer}</p>
+        <p>Send all privacy requests and questions to <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. They are handled by the brokerage's Information Officer.</p>
         <h2>Complaints</h2>
-        <p>You may complain to the Information Regulator of South Africa.</p>
+        <p>If you are unhappy with how we handled your information, please tell us first. You also have the right to complain to the Information Regulator of South Africa: <a href="https://inforegulator.org.za">inforegulator.org.za</a>, complaints.IR@inforegulator.org.za.</p>
       </div>
     </div>
   </section>

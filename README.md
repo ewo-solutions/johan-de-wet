@@ -62,7 +62,7 @@ Mirrors section 10 of the brief.
 3. **Domain and sending domain (open).** `SITE_URL` falls back to `https://www.example.co.za` (canonicals, sitemap, robots). Resend domain verification needed for `johan.dewet@propertycoza.co.za`.
 4. **Report PDFs and covers (missing).** `public/reports/q2-2026/*.pdf` and `*-cover.jpg` do not exist. Until the PDFs are added the function emails the requester a holding message and flags Johan. OG falls back to `public/placeholders/og-default.png` (placeholder, 1200x630).
 5. **Complex photographs (missing).** Placeholder grey blocks: `public/placeholders/band.svg` (home band), referenced only in `ASSETS.band`.
-6. **POPIA text and Information Officer (missing).** `/privacy` has placeholder headings; officer name in `SITE.informationOfficer`.
+6. **POPIA privacy notice (drafted, needs review).** `/privacy` is now a full draft written for this site (3-year retention proposed, provider list, Information Regulator contact). Property.CoZa or a legal adviser should review it and name the Information Officer in `src/config.ts`.
 7. **Reviews (missing).** `/about` shows a placeholder block; no quotes were invented. `SITE.googleBusinessProfile` and `SITE.facebook` are empty (omitted from JSON-LD until set).
 8. **Meta Pixel ID, CAPI token, GA4 ID, Google Ads conversion (env).** Not set.
 9. **Logos and portrait (missing).** Text wordmark used (`Wordmark.astro`); `ASSETS.logo` / `ASSETS.logoWhite` are null. Portrait placeholder `public/placeholders/portrait.svg` via `ASSETS.portrait`. Brokerage sign-off on the Property.CoZa Protea logo pending. Report-page blurred preview is `public/placeholders/report-preview.svg` (`ASSETS.reportPreview`).
