@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import AboutSection from '../components/AboutSection.astro';
+import ClosingBanner from '../components/ClosingBanner.astro';
+import { SITE, STATS } from '../config';
+import { businessJsonLd } from '../lib/jsonld';
+const siteUrl = new URL('/', Astro.site).toString();
+---
+<Base
+  title="About Johan de Wet · Property Practitioner, Somerset West"
+  description="Johan de Wet is a full status property practitioner at Property.CoZa Protea, serving Paardevlei, Somerset West and the Helderberg."
+  jsonLd={businessJsonLd(siteUrl)}
+>
+  <section class="hero">
+    <div class="wrap">
+      <p class="kicker">About</p>
+      <h1>Johan de Wet</h1>
+      <p class="lede">Property Practitioner at {SITE.brokerage}. {STATS.years} years in real estate, working in {SITE.areaServed}.</p>
+    </div>
+  </section>
+  <AboutSection full />
+  <section class="section" aria-labelledby="reviews-h">
+    <div class="wrap">
+      <p class="kicker">Reviews</p>
+      <h2 id="reviews-h">{STATS.reviews} five-star Google reviews</h2>
+      {/* TODO(open item 7): Johan to approve which quotes appear; link to Google Business Profile. */}
+      <div class="placeholder-note">
+        <strong>Placeholder.</strong> Approved Google review quotes will go here once Johan has chosen them. No review text has been invented.
+      </div>
+      <p style="margin-top:20px">
+        {SITE.googleBusinessProfile
+          ? <a class="btn btn--secondary" href={SITE.googleBusinessProfile} rel="noopener">Read the reviews on Google</a>
+          : <span class="placeholder-note">Placeholder: Google Business Profile link to be added in src/config.ts.</span>}
+      </p>
+    </div>
+  </section>
+  <ClosingBanner />
+</Base>

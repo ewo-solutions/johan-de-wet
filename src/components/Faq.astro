@@ -1,0 +1,22 @@
+---
+const items = [
+  ['Is the valuation really free?', 'Yes. There is no fee and no obligation. You decide what to do with the number afterwards, including nothing at all.'],
+  ['Do I have to be selling?', 'No. Many owners ask simply to know where they stand, for planning, for a divorce or estate, or out of curiosity.'],
+  ['Will you pressure me to list with you?', 'No. I give you an honest view and answer your questions. If you would like me to help you sell, I will gladly talk about it, but only when you ask.'],
+  ['What do I need to prepare?', 'Nothing special. It helps to have your levy and rates statements to hand if you can find them, but we can manage without.'],
+];
+---
+<section class="section faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <p class="kicker">Questions</p>
+    <h2 id="faq-h">Before you ask</h2>
+    <div style="margin-top:24px">
+      {items.map(([q, a]) => (
+        <details>
+          <summary>{q}</summary>
+          <p>{a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

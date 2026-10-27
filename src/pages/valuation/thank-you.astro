@@ -1,0 +1,17 @@
+---
+import Base from '../../layouts/Base.astro';
+import { whatsappUrl } from '../../config';
+---
+<Base title="Thank you · Johan de Wet" description="Your valuation request has been received." noindex minimal>
+  <section class="thanks">
+    <div class="wrap">
+      <p class="kicker">Request received</p>
+      <h1>Thank you, it is with me.</h1>
+      <p class="lede">I will be in touch shortly to confirm a time. A confirmation is on its way to your inbox as well.</p>
+      <div class="btn-row">
+        <a class="btn" href="/reports">See the complex reports</a>
+        <a class="btn btn--secondary" href={whatsappUrl()} data-track="whatsapp" data-place="thank-you" rel="noopener">Chat on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</Base>

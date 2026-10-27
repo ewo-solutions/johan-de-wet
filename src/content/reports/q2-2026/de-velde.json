@@ -1,0 +1,15 @@
+{
+  "slug": "de-velde",
+  "name": "De Velde",
+  "quarter": "Q2 2026",
+  "periodLabel": "1 April – 30 June 2026",
+  "figures": [
+    { "value": "22", "label": "registered transfers in Q2" },
+    { "value": "R1 275 000 – R3 300 000", "label": "price range" },
+    { "value": "~4%", "label": "rise in the 96 m² median, Q1 to Q2" }
+  ],
+  "teaser": "The 96 m² layout made up half of all Q2 transfers, and its median rose about 4% from Q1 to Q2.",
+  "pdf": "/reports/q2-2026/de-velde.pdf",
+  "coverImage": "/reports/q2-2026/de-velde-cover.jpg",
+  "published": "2026-10-01"
+}

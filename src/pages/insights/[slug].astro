@@ -1,0 +1,47 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ClosingBanner from '../../components/ClosingBanner.astro';
+import { SITE } from '../../config';
+import { getLatestReports } from '../../lib/reports';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('insights');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+const reports = await getLatestReports();
+const report = reports.find((r) => r.slug === post.data.complex);
+const draft = post.data.status === 'placeholder-draft';
+const url = new URL(`/insights/${post.id}`, Astro.site).toString();
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date.toISOString(),
+  author: { '@type': 'Person', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  mainEntityOfPage: url,
+};
+const date = post.data.date.toLocaleDateString('en-ZA', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+---
+<Base title={`${post.data.title} · Johan de Wet`} description={post.data.description} ogType="article" noindex={draft} jsonLd={ld}>
+  <article class="hero">
+    <div class="wrap">
+      <p class="kicker">{post.data.pillar} · {date}</p>
+      <h1>{post.data.title}</h1>
+      {draft && <p class="draft-flag" role="note">Placeholder draft. Written to test the template. Not reviewed or approved by Johan. Do not publish as is.</p>}
+      <div class="prose"><Content /></div>
+      <div class="section" style="margin-top:48px;padding-inline:0">
+        <h2 style="font-size:1.5rem">Next steps</h2>
+        <div class="btn-row">
+          <a class="btn" href={report ? `/reports/${report.slug}` : '/reports'}>{report ? `Get the ${report.name} report` : 'Get your complex report'}</a>
+          <a class="btn btn--secondary" href="/valuation">Request a free valuation</a>
+        </div>
+      </div>
+    </div>
+  </article>
+  <ClosingBanner />
+</Base>

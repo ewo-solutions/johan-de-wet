@@ -1,0 +1,14 @@
+---
+import { whatsappUrl } from '../config';
+const { bookHref = '/valuation' } = Astro.props;
+---
+<section class="banner" aria-labelledby="close-h">
+  <div class="wrap">
+    <h2 id="close-h">Find out what your unit is worth today.</h2>
+    <p>Forty-five minutes, free, and an honest number at the end of it.</p>
+    <div class="btn-row">
+      <a class="btn btn--light" href={bookHref}>Request a free valuation</a>
+      <a class="btn btn--outline-light" href={whatsappUrl()} data-track="whatsapp" data-place="closing-banner" rel="noopener">Chat on WhatsApp</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+{
+  "slug": "the-jade",
+  "name": "The Jade",
+  "quarter": "Q2 2026",
+  "periodLabel": "1 April – 30 June 2026",
+  "figures": [
+    { "value": "15", "label": "registered sales in Q2" },
+    { "value": "R1 450 000 – R3 150 000", "label": "price range" },
+    { "value": "R20 388 – R35 227/m²", "label": "price per m² range" }
+  ],
+  "teaser": "15 of the 19 sales this year landed in Q2.",
+  "pdf": "/reports/q2-2026/the-jade.pdf",
+  "coverImage": "/reports/q2-2026/the-jade-cover.jpg",
+  "published": "2026-10-01"
+}

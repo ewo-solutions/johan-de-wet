@@ -1,0 +1,13 @@
+---
+import { SITE, ASSETS } from '../config';
+const { light = false } = Astro.props;
+const src = light ? ASSETS.logoWhite : ASSETS.logo;
+---
+<a class="wordmark" href="/" aria-label={`${SITE.name}, home`}>
+  {src ? <img class="logo-img" src={src} alt={SITE.name} width="160" height="40" /> : (
+    <>
+      <strong>{SITE.name}</strong>
+      <span>Property Practitioner</span>
+    </>
+  )}
+</a>

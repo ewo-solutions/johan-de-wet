@@ -1,0 +1,23 @@
+---
+import { ASSETS, SITE } from '../config';
+const { full = false } = Astro.props;
+---
+<section class="section" aria-labelledby="about-h">
+  <div class="wrap split">
+    <img class="ph portrait" src={ASSETS.portrait} alt="Portrait of Johan de Wet" width="800" height="1000" loading="lazy" />
+    <div>
+      <p class="kicker">About Johan</p>
+      <h2 id="about-h">A straight answer, from someone who knows the complex.</h2>
+      {/* TODO: existing copy not supplied; en-ZA draft needs Johan's approval. */}
+      <p>I have worked in real estate for 13 years, and today most of my work is in Paardevlei and the wider Helderberg. I believe an owner deserves an honest number and a plain explanation of how I got there.</p>
+      <p>I work from registered transfers in your complex, I explain what I see, and I leave the decision with you.</p>
+      <ul class="creds">
+        <li>{SITE.nqf}</li>
+        <li>{SITE.ffc}</li>
+        <li>Full status property practitioner</li>
+        <li>Top 5 national agent</li>
+      </ul>
+      {!full && <p style="margin-top:24px"><a class="btn btn--secondary" href="/about">More about Johan</a></p>}
+    </div>
+  </div>
+</section>

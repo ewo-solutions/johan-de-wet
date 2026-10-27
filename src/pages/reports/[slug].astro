@@ -1,0 +1,48 @@
+---
+import Base from '../../layouts/Base.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import ClosingBanner from '../../components/ClosingBanner.astro';
+import { getLatestReports, ogImageFor } from '../../lib/reports';
+import { ASSETS, DATA_NOTICE } from '../../config';
+
+export async function getStaticPaths() {
+  const reports = await getLatestReports();
+  return reports.map((r) => ({ params: { slug: r.slug }, props: { r } }));
+}
+const { r } = Astro.props;
+const label = r.kicker || r.quarter;
+---
+<Base
+  title={`${r.name} Paardevlei property prices · ${label} report · Johan de Wet`}
+  description={`${r.name}: ${r.figures.map((f) => f.value + ' ' + f.label).join(', ')}. ${r.teaser} Free report.`}
+  ogImage={ogImageFor(r)}
+>
+  <section class="hero">
+    <div class="wrap report-grid">
+      <div>
+        <p class="kicker">Property Report · {label}</p>
+        <h1>{r.name}</h1>
+        <p class="muted label">{r.periodLabel}</p>
+        <div class="fig-grid">
+          {r.figures.map((f) => (
+            <div class="fig"><b>{f.value}</b><span>{f.label}</span></div>
+          ))}
+        </div>
+        <p class="lede">{r.teaser}</p>
+        <figure class="locked" style="margin:28px 0 0">
+          <img class="ph" src={r.previewImage || ASSETS.reportPreview} alt="Blurred preview of the first page of the report" width="800" height="600" loading="lazy" />
+          <figcaption>Full sales table in the free report</figcaption>
+        </figure>
+      </div>
+      <div id="report-form">
+        <LeadForm kind="report" id="report-form-el" selected={r.name} heading={`Get the ${r.name} report`} intro="Free. It arrives by email within a minute." />
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <p class="muted" style="max-width:60em">{DATA_NOTICE}</p>
+    </div>
+  </section>
+  <ClosingBanner />
+</Base>

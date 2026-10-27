@@ -1,0 +1,16 @@
+{
+  "slug": "paardevlei-square",
+  "name": "Paardevlei Square",
+  "quarter": "Q2 2026",
+  "kicker": "2026 to date",
+  "periodLabel": "1 January – 30 June 2026",
+  "figures": [
+    { "value": "3", "label": "registered sales, 2026 to date" },
+    { "value": "R2 950 000 – R3 925 000", "label": "price range" },
+    { "value": "2 × 128 m²", "label": "units sold at about R3.9m" }
+  ],
+  "teaser": "Sales here are rare, so the report covers 2026 to date.",
+  "pdf": "/reports/q2-2026/paardevlei-square.pdf",
+  "coverImage": "/reports/q2-2026/paardevlei-square-cover.jpg",
+  "published": "2026-10-01"
+}

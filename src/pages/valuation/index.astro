@@ -1,0 +1,42 @@
+---
+import Base from '../../layouts/Base.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import Steps from '../../components/Steps.astro';
+import Faq from '../../components/Faq.astro';
+import ClosingBanner from '../../components/ClosingBanner.astro';
+import { STATS } from '../../config';
+---
+<Base
+  title="Free property valuation · Paardevlei, Somerset West · Johan de Wet"
+  description="Book a free, no-obligation valuation of your Paardevlei unit with Johan de Wet."
+  noindex
+  minimal
+>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="kicker">Paardevlei · Somerset West</p>
+        <h1>What is your Paardevlei unit worth today?</h1>
+        <p class="lede">Book a free valuation. It takes forty-five minutes and you leave with an honest number.</p>
+        <p class="pull">No obligation. No pressure. Just an honest conversation.</p>
+      </div>
+      <div id="book">
+        <LeadForm kind="valuation" id="val-lp" heading="Request a free valuation" />
+      </div>
+    </div>
+  </section>
+  <Steps />
+  <section class="section" aria-labelledby="proof-h">
+    <div class="wrap">
+      <p class="kicker">Why Johan</p>
+      <h2 id="proof-h">Proof, not promises</h2>
+      <div class="stats" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))">
+        <div class="stat"><b>{STATS.reviews}</b><span>five-star Google reviews</span></div>
+        <div class="stat"><b>Top 5</b><span>national agent</span></div>
+        <div class="stat"><b>Full status</b><span>property practitioner</span></div>
+      </div>
+    </div>
+  </section>
+  <Faq />
+  <ClosingBanner bookHref="#book" />
+</Base>

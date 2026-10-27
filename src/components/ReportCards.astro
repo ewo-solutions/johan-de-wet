@@ -1,0 +1,17 @@
+---
+import { getLatestReports } from '../lib/reports';
+const reports = await getLatestReports();
+const { heading = true } = Astro.props;
+---
+<div class="cards">
+  {reports.map((r) => (
+    <article class="card">
+      <h3>{r.name}</h3>
+      <p class="period">{r.kicker || r.quarter} · {r.periodLabel}</p>
+      <div class="big">{r.figures[0].value}</div>
+      <p class="big-label">{r.figures[0].label}</p>
+      <p class="teaser">{r.teaser}</p>
+      <a class="btn btn--light" href={`/reports/${r.slug}`}>Get the report<span class="sr-only"> for {r.name}</span></a>
+    </article>
+  ))}
+</div>

@@ -1,0 +1,56 @@
+---
+import Base from '../layouts/Base.astro';
+import LeadForm from '../components/LeadForm.astro';
+import Steps from '../components/Steps.astro';
+import Faq from '../components/Faq.astro';
+import ClosingBanner from '../components/ClosingBanner.astro';
+import ReportCards from '../components/ReportCards.astro';
+import AboutSection from '../components/AboutSection.astro';
+import { ASSETS, STATS } from '../config';
+import { businessJsonLd } from '../lib/jsonld';
+
+const siteUrl = new URL('/', Astro.site).toString();
+---
+<Base
+  title="What is your Paardevlei unit worth? Free valuation · Johan de Wet"
+  description="Free, no-obligation property valuation in Paardevlei, Somerset West, based on registered sales in your complex. Plus free quarterly complex reports."
+  jsonLd={businessJsonLd(siteUrl)}
+>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="kicker">Paardevlei · Somerset West</p>
+        <h1>What is your Paardevlei unit worth today?</h1>
+        <p class="lede">A free valuation from a local property practitioner, built on what units in your complex have actually sold for.</p>
+        <p class="pull">No obligation. No pressure. Just an honest conversation.</p>
+        <div class="stats">
+          <div class="stat"><b>{STATS.reviews}</b><span>five-star Google reviews</span></div>
+          <div class="stat"><b>{STATS.years}</b><span>years in real estate</span></div>
+          <div class="stat"><b>{STATS.minutes}</b><span>minutes, start to finish</span></div>
+        </div>
+      </div>
+      <div id="book">
+        <LeadForm kind="valuation" id="val-home" heading="Request a free valuation" />
+      </div>
+    </div>
+  </section>
+
+  <div class="band">
+    <img class="ph" src={ASSETS.band} alt="" width="1600" height="500" loading="lazy" />
+  </div>
+
+  <Steps />
+
+  <section class="section dark" aria-labelledby="reports-h">
+    <div class="wrap">
+      <p class="kicker">Q2 2026 · Free</p>
+      <h2 id="reports-h">Q2 2026 complex reports</h2>
+      <p class="lede">One report per complex, every quarter, built from registered transfers. Pick yours.</p>
+      <ReportCards />
+    </div>
+  </section>
+
+  <AboutSection />
+  <Faq />
+  <ClosingBanner bookHref="#book" />
+</Base>

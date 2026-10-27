@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ClosingBanner from '../../components/ClosingBanner.astro';
+const posts = (await getCollection('insights')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = (d: Date) => d.toLocaleDateString('en-ZA', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+---
+<Base title="Paardevlei property insights · Johan de Wet" description="Plain-language articles on Paardevlei property, built on registered sales in each complex.">
+  <section class="hero">
+    <div class="wrap">
+      <p class="kicker">Insights</p>
+      <h1>What the registered sales say</h1>
+      <ul class="article-list">
+        {posts.map((p) => (
+          <li>
+            <p class="label" style="margin:0">{fmt(p.data.date)} · {p.data.pillar}{p.data.status === 'placeholder-draft' && <span class="tag">Placeholder draft</span>}</p>
+            <h2><a href={`/insights/${p.id}`}>{p.data.title}</a></h2>
+            <p>{p.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <ClosingBanner />
+</Base>

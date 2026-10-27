@@ -1,0 +1,128 @@
+---
+/**
+ * kind: 'report' | 'valuation' | 'suburb'
+ * One component, three Netlify Forms. Posts via src/scripts/forms.js; without JS it
+ * falls back to a normal POST that Netlify redirects to `action`.
+ */
+import { OTHER_COMPLEX, WHEN_OPTIONS, SITE } from '../config';
+import { getLatestReports } from '../lib/reports';
+
+const { kind, id, selected = '', heading = '', buttonLabel = '', intro = '' } = Astro.props;
+const reports = await getLatestReports();
+const formName = { report: 'report-request', valuation: 'valuation-request', suburb: 'suburb-interest' }[kind];
+const action = kind === 'valuation' ? '/valuation/thank-you' : '/reports/thank-you';
+const label = buttonLabel || (kind === 'valuation' ? 'Request a free valuation' : kind === 'report' ? 'Send me the report' : 'Keep me posted');
+const consentText =
+  kind === 'valuation'
+    ? 'I agree that Johan may contact me about my valuation request and send occasional market updates.'
+    : 'Send me the quarterly report and occasional market updates. I can unsubscribe at any time.';
+const hidden = ['source_page', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'fbclid', 'gclid', 'track', 'event_id', 'tracking_consent'];
+const f = (n: string) => `${id}-${n}`;
+---
+<form
+  class="form-panel"
+  name={formName}
+  method="POST"
+  action={action}
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  data-lead-form={kind}
+  novalidate
+  id={id}
+>
+  {heading && <h2>{heading}</h2>}
+  {intro && <p>{intro}</p>}
+  <input type="hidden" name="form-name" value={formName} />
+  {hidden.map((n) => <input type="hidden" name={n} value="" />)}
+  {kind === 'suburb' && <input type="hidden" name="complex" value={OTHER_COMPLEX} />}
+  <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+
+  <div class="field">
+    <label for={f('name')}>Full name</label>
+    <input id={f('name')} name="name" type="text" autocomplete="name" required aria-describedby={f('name-err')} />
+    <p class="field-error" id={f('name-err')} data-error-for="name" role="alert" hidden></p>
+  </div>
+
+  {kind === 'valuation' ? (
+    <>
+      <div class="field">
+        <label for={f('mobile')}>Mobile</label>
+        <input id={f('mobile')} name="mobile" type="tel" inputmode="tel" autocomplete="tel" placeholder="082 123 4567" required aria-describedby={f('mobile-err')} />
+        <p class="field-error" id={f('mobile-err')} data-error-for="mobile" role="alert" hidden></p>
+      </div>
+      <div class="field">
+        <label for={f('email')}>Email</label>
+        <input id={f('email')} name="email" type="email" autocomplete="email" required aria-describedby={f('email-err')} />
+        <p class="field-error" id={f('email-err')} data-error-for="email" role="alert" hidden></p>
+      </div>
+      <div class="field">
+        <label for={f('complex')}>Your complex or suburb</label>
+        <select id={f('complex')} name="complex" required aria-describedby={f('complex-err')}>
+          <option value="">Choose one</option>
+          {reports.map((r) => <option value={r.name} selected={selected === r.name}>{r.name}</option>)}
+          <option value="Other">Other</option>
+        </select>
+        <p class="field-error" id={f('complex-err')} data-error-for="complex" role="alert" hidden></p>
+      </div>
+      <div class="field" data-other-wrap>
+        <label for={f('other')}>If other, which complex or suburb?</label>
+        <input id={f('other')} name="complex_other" type="text" aria-describedby={f('other-err')} />
+        <p class="field-error" id={f('other-err')} data-error-for="complex_other" role="alert" hidden></p>
+      </div>
+      <div class="field">
+        <label for={f('when')}>When suits you</label>
+        <select id={f('when')} name="when" required aria-describedby={f('when-err')}>
+          <option value="">Choose one</option>
+          {WHEN_OPTIONS.map((w) => <option value={w}>{w}</option>)}
+        </select>
+        <p class="field-error" id={f('when-err')} data-error-for="when" role="alert" hidden></p>
+      </div>
+    </>
+  ) : (
+    <>
+      <div class="field">
+        <label for={f('email')}>Email</label>
+        <input id={f('email')} name="email" type="email" autocomplete="email" required aria-describedby={f('email-err')} />
+        <p class="field-error" id={f('email-err')} data-error-for="email" role="alert" hidden></p>
+      </div>
+      <div class="field">
+        <label for={f('mobile')}>Mobile</label>
+        <input id={f('mobile')} name="mobile" type="tel" inputmode="tel" autocomplete="tel" placeholder="082 123 4567" required aria-describedby={f('mobile-err')} />
+        <p class="field-error" id={f('mobile-err')} data-error-for="mobile" role="alert" hidden></p>
+      </div>
+      {kind === 'report' ? (
+        <div class="field">
+          <label for={f('complex')}>Your complex</label>
+          <select id={f('complex')} name="complex" required aria-describedby={f('complex-err')}>
+            <option value="">Choose one</option>
+            {reports.map((r) => <option value={r.name} data-slug={r.slug} selected={selected === r.name}>{r.name}</option>)}
+            <option value={OTHER_COMPLEX} data-slug="other" selected={selected === OTHER_COMPLEX}>{OTHER_COMPLEX}</option>
+          </select>
+          <p class="field-error" id={f('complex-err')} data-error-for="complex" role="alert" hidden></p>
+        </div>
+      ) : (
+        <div class="field">
+          <label for={f('suburb')}>Your suburb</label>
+          <input id={f('suburb')} name="suburb" type="text" required aria-describedby={f('suburb-err')} />
+          <p class="field-error" id={f('suburb-err')} data-error-for="suburb" role="alert" hidden></p>
+        </div>
+      )}
+    </>
+  )}
+
+  <div class="field">
+    <label class="check" for={f('consent')}>
+      <input id={f('consent')} name="consent" type="checkbox" required aria-describedby={f('consent-err')} />
+      <span>{consentText} <a href="/privacy">Privacy notice</a>.</span>
+    </label>
+    <p class="field-error" id={f('consent-err')} data-error-for="consent" role="alert" hidden></p>
+  </div>
+
+  <button class="btn btn--primary btn--block" type="submit">{label}</button>
+  <p class="form-status" data-status role="status"></p>
+  {kind === 'valuation' && <p class="form-micro">Your details go to me directly and are never shared or sold. {SITE.ffc}.</p>}
+  {kind !== 'valuation' && <p class="form-micro">Your details go to me directly and are never shared or sold.</p>}
+</form>
+<script>
+  import '../scripts/forms.js';
+</script>

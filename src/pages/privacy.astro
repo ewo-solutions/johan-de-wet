@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../config';
+---
+<Base title="Privacy notice (POPIA) · Johan de Wet" description="How Johan de Wet collects, uses and protects your personal information under POPIA.">
+  <section class="hero">
+    <div class="wrap">
+      <p class="kicker">POPIA</p>
+      <h1>Privacy notice</h1>
+      {/* TODO(open item 6): Property.CoZa / legal to supply final text and Information Officer. */}
+      <p class="placeholder-note" style="max-width:44rem;margin-bottom:28px"><strong>Placeholder structure.</strong> The headings below are in place; the final legal wording and the Information Officer details are to be supplied by Johan or Property.CoZa.</p>
+      <div class="prose">
+        <h2>Who collects your information</h2>
+        <p>Johan de Wet, Property Practitioner at {SITE.brokerage} ({SITE.ffc}). Contact: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+        <h2>What we collect</h2>
+        <p>Your name, email address, mobile number, your complex or suburb, your preferred time for a valuation, and basic technical and campaign data (such as the page you came from) when you complete a form. Analytics and advertising cookies are loaded only if you accept them.</p>
+        <h2>Why we collect it</h2>
+        <ul>
+          <li>To send you the property reports you ask for.</li>
+          <li>To arrange and confirm a valuation.</li>
+          <li>To send occasional marketing about property in the area, where you have agreed.</li>
+        </ul>
+        <h2>Who we share it with</h2>
+        <p>[To be completed: service providers such as email delivery and advertising platforms, and the brokerage.]</p>
+        <h2>How long we keep it</h2>
+        <p>[Retention period to be confirmed.]</p>
+        <h2>Your rights</h2>
+        <p>You may ask to access, correct or delete your personal information, and you may object to or opt out of marketing at any time. Every email can be unsubscribed from, or write to us at the address above.</p>
+        <h2>Information Officer</h2>
+        <p>{SITE.informationOfficer}</p>
+        <h2>Complaints</h2>
+        <p>You may complain to the Information Regulator of South Africa.</p>
+      </div>
+    </div>
+  </section>
+</Base>

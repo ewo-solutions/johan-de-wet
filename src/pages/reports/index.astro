@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import ReportCards from '../../components/ReportCards.astro';
+import ClosingBanner from '../../components/ClosingBanner.astro';
+---
+<Base
+  title="Paardevlei property prices by complex · Free Q2 2026 reports · Johan de Wet"
+  description="A free report for every Paardevlei complex, every quarter, built from registered sales. Choose De Velde, Paardevlei Lifestyle Estate, Paardevlei Square or The Jade."
+>
+  <section class="hero">
+    <div class="wrap">
+      <p class="kicker">Free quarterly reports</p>
+      <h1>Your complex. Every registered sale.</h1>
+      <p class="lede">One report per complex, every quarter, free. Choose yours and it lands in your inbox.</p>
+      <ReportCards />
+    </div>
+  </section>
+  <section class="section" aria-labelledby="other-h">
+    <div class="wrap split">
+      <div>
+        <p class="kicker">Somewhere else?</p>
+        <h2 id="other-h">Not in one of these complexes?</h2>
+        <p>Leave your details and your suburb. I am adding more Somerset West suburbs and will let you know when yours is ready.</p>
+      </div>
+      <LeadForm kind="suburb" id="suburb-hub" buttonLabel="Keep me posted" />
+    </div>
+  </section>
+  <ClosingBanner />
+</Base>

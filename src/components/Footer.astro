@@ -1,0 +1,42 @@
+---
+import { SITE, DATA_NOTICE, whatsappUrl } from '../config';
+const { minimal = false } = Astro.props;
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h2>{SITE.name}</h2>
+        <p>{SITE.tagline}<br />{SITE.ffc}<br />{SITE.nqf}</p>
+        <p>Serving {SITE.areaServed}.</p>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href={SITE.phoneHref} data-track="phone" data-place="footer">{SITE.phoneDisplay}</a></li>
+          <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+          <li><a href={whatsappUrl()} data-track="whatsapp" data-place="footer" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+      {!minimal && (
+        <div>
+          <h2>Explore</h2>
+          <ul>
+            <li><a href="/valuation">Free valuation</a></li>
+            <li><a href="/reports">Complex reports</a></li>
+            <li><a href="/insights">Insights</a></li>
+            <li><a href="/about">About Johan</a></li>
+          </ul>
+        </div>
+      )}
+      <div>
+        <h2>Legal</h2>
+        <ul>
+          <li><a href="/privacy">Privacy notice (POPIA)</a></li>
+          <li><button class="linkbtn" type="button" data-cookie-settings>Cookie settings</button></li>
+        </ul>
+      </div>
+    </div>
+    <p class="data-notice">{DATA_NOTICE}</p>
+  </div>
+</footer>

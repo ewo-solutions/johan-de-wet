@@ -1,0 +1,15 @@
+{
+  "slug": "paardevlei-lifestyle-estate",
+  "name": "Paardevlei Lifestyle Estate",
+  "quarter": "Q2 2026",
+  "periodLabel": "1 April – 30 June 2026",
+  "figures": [
+    { "value": "10", "label": "registered sales in Q2" },
+    { "value": "R1 250 000 – R3 850 000", "label": "price range" },
+    { "value": "~R32 100/m²", "label": "median price per m²" }
+  ],
+  "teaser": "Among the firmest price-per-m² figures in the area; one 36 m² unit sold at R37 916/m².",
+  "pdf": "/reports/q2-2026/paardevlei-lifestyle-estate.pdf",
+  "coverImage": "/reports/q2-2026/paardevlei-lifestyle-estate-cover.jpg",
+  "published": "2026-10-01"
+}
