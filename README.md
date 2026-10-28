@@ -79,4 +79,4 @@ The brief refers to "existing copy" that was not supplied, so en-ZA drafts were 
 - No time-on-market, asking-vs-achieved or stock figures anywhere.
 
 ## Q3 2026 data
-Report JSON in `src/content/reports/q3-2026/` is built from the tables in Johan's Q3 PDFs (medians and ranges computed from the registered sales). The four PDFs and a cover image per complex (page 1 of each PDF) are in `public/reports/q3-2026/`. The report page preview currently reuses the cover. The two placeholder insight articles still quote Q2 figures and should be refreshed before approval.
+Report JSON in `src/content/reports/q3-2026/` is built from the tables in Johan's Q3 PDFs (medians and ranges computed from the registered sales). The four PDFs and a cover image per complex (page 1 of each PDF) are in `public/reports/q3-2026/`. The locked preview on each report page is a pre-blurred crop of the sales table page (`*-table-preview.jpg`, blur baked into the image so the figures cannot be recovered); regenerate it from page 2 of the PDF each quarter. The two placeholder insight articles still quote Q2 figures and should be refreshed before approval.
